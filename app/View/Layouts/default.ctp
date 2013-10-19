@@ -124,7 +124,6 @@
 		<script type="text/javascript">
 			$(function() {
 				$(document).ready(function() {
-					alert(123);
 					$('.flexslider').flexslider({
 						animation: "fade",
 						slideshowSpeed: 4000,

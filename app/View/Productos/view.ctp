@@ -1,3 +1,5 @@
+
+
 <div class="productos view">
 <h2><?php echo __('Producto'); ?></h2>
 	<dl>

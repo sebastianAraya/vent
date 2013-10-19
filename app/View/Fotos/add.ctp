@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Foto'); ?></legend>
 	<?php
 		echo $this->Form->input('producto_id');
-		echo $this->Form->input('imagen');
+		echo $this->Form->input('imagen', array('type' => 'file'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

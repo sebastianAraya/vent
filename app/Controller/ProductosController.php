@@ -20,8 +20,10 @@ class ProductosController extends AppController {
  *
  * @return void
  */
+
 	public function index() {
 		$this->Producto->recursive = 0;
+		$this->paginate = array('limit' => 9 );
 		$this->set('productos', $this->Paginator->paginate());
 	}
 
@@ -86,6 +88,10 @@ class ProductosController extends AppController {
 		$users = $this->Producto->User->find('list');
 		$categorias = $this->Producto->Categoria->find('list');
 		$solicitudes = $this->Producto->Solicitude->find('list');
+
+		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
+		$this->set('producto', $this->Producto->find('first', $options));
+		
 		$this->set(compact('users', 'categorias', 'solicitudes'));
 	}
 

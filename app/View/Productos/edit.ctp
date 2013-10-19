@@ -1,22 +1,59 @@
-<div class="productos form">
-<?php echo $this->Form->create('Producto'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Producto'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('nombre');
-		echo $this->Form->input('descripcion');
-		echo $this->Form->input('precio');
-		echo $this->Form->input('destacado');
-		echo $this->Form->input('fecha');
-		echo $this->Form->input('mostrar');
-		echo $this->Form->input('cantidad');
-		echo $this->Form->input('Categoria');
-		echo $this->Form->input('Solicitude');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+			
+<section class="sub">
+	<h4 class="text-center">Editando la información de <?php echo $this->Form->value('Producto.nombre')?></h4>
+	<p><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Producto.id')), null,'¿Estás seguro de eliminar este producto?'); ?>
+	</p>
+</section>
+<section class="asdf">
+	<div class="tabbable tabs-left">
+    	<ul class="nav nav-tabs">
+        	<li class="active"><a href="#lA" data-toggle="tab">Información</a></li>
+            	<li><a href="#lB" data-toggle="tab">Imagenes</a></li>
+            </ul>
+        	<div class="tab-content">
+                <div class="tab-pane active" id="lA">
+                	<div class="span5" >
+					<?php echo $this->Form->create('Producto'); ?>
+                    <?php
+					echo $this->Form->input('id');
+					echo $this->Form->input('nombre', array('type'=>'text'));
+					echo $this->Form->input('descripcion');
+					echo $this->Form->input('precio', array('type'=>'number'));
+				//para admin
+					?>
+					</div>
+					<div class="span5">
+					<?php
+						echo $this->Form->input('destacado');
+						echo $this->Form->input('mostrar');
+					//fin admin
+						echo $this->Form->input('cantidad');
+						echo $this->Form->input('Categoria', array('type' => 'select', 'multiple'=>'checkbox'));
+						echo $this->Form->end(__('Guardar'));
+					?>
+					</div>
+                </div>
+                <div class="tab-pane" id="lB">
+
+                  	<?php foreach ($producto['Foto'] as $foto): ?>
+						<?php //echo $foto['id']; ?>
+						<?php //echo $foto['producto_id']; ?>
+						<?php echo $foto['imagen']; ?>
+						array('type' => 'file')
+						<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'fotos', 'action' => 'delete', $foto['id']), null, __('¿Eliminar Imagen?', $foto['id'])); ?>
+					<?php endforeach; ?>
+
+
+
+					
+                </div>
+			</div>
+		</div>
+	<br />
+</section>
+
+
+<!--
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
@@ -34,3 +71,4 @@
 		<li><?php echo $this->Html->link(__('New Solicitude'), array('controller' => 'solicitudes', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+-->
