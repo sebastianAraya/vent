@@ -70,16 +70,37 @@ class ProductosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function edit($id = null, $tipo =null) {
 		if (!$this->Producto->exists($id)) {
 			throw new NotFoundException(__('Invalid producto'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Producto->save($this->request->data)) {
-				$this->Session->setFlash(__('The producto has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The producto could not be saved. Please, try again.'));
+			if($this->data['Foto'] != null){
+				$this->Producto->Foto->create();
+				$destino = WWW_ROOT.'files'.DS;
+				$rand= rand(1,100000000);
+				if(move_uploaded_file($this->data['Foto']['foto']['tmp_name'], $destino.$rand."_".$this->data['Foto']['foto']['name']) ){  
+					$this->request->data['Foto']['imagen'] = $rand."_".$this->data['Foto']['foto']['name'] ; 
+					$this->request->data['Foto']['producto_id'] = $id;   
+					if ($this->Producto->Foto->save($this->request->data)) {
+						$this->Session->setFlash(__('El archivo se a guardado'));
+					} else {
+						$this->Session->setFlash(__('Problemas al subir el archivo'));
+					}
+		           	return $this->redirect(array('action' => 'index'));
+		        }
+		        else{
+		           	$this->Session->setFlash(__('El archivo no se pudo subir, intente nuevamente'));       
+		       		return $this->redirect(array('action' => 'index'));
+		        }
+			}
+			else{
+				if ($this->Producto->save($this->request->data)) {
+					$this->Session->setFlash(__('The producto has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('El producto no se puede editar, intente nuevamente.'));
+				} 
 			}
 		} else {
 			$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
@@ -92,7 +113,7 @@ class ProductosController extends AppController {
 		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
 		$this->set('producto', $this->Producto->find('first', $options));
 		
-		$this->set(compact('users', 'categorias', 'solicitudes'));
+		$this->set(compact('users', 'categorias', 'solicitudes','tipo'));
 	}
 
 /**

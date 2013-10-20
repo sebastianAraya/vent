@@ -46,40 +46,24 @@ class FotosController extends AppController {
  * @return void
  */
 	public function add() {
-
-		         // Informacion del tipo de archivo subido $this->data['Upload']['archivo']['type']
-                  $destino = WWW_ROOT.'uploads'.DS;
-                  if(move_uploaded_file($archivo['tmp_name'], $destino.$archivo['name']))
-                   {               
-                      $this->Session->setFlash(__('El archivo se a guardado'));
-                   }
-                  else
-                   {
-                          $this->Session->setFlash(__('El archivo no se pudo subir, por favor intentelo de nuevo'));       
-                   }
-                   $this->redirect(array('action' => 'index'));
-             }else{
-                  $this->Session->setFlash(__('Error al intentar subir el archivo'));
-              }
-        }
-
-
 		if ($this->request->is('post')) {
 			$this->Foto->create();
-			if ($this->Foto->save($this->request->data)) {
-				$destino = WWW_ROOT.'uploads'.DS;
-                if(move_uploaded_file($archivo['imagen'], $destino.$archivo['name'])){               
-                	$this->Session->setFlash(__('El archivo se a guardado'));
-                }
-                else{
-                	$this->Session->setFlash(__('El archivo no se pudo subir, por favor intentelo de nuevo'));       
-                }
-                $this->redirect(array('action' => 'index'));
-				return $this->redirect(array('action' => 'index'));
-
-			} else {
-				$this->Session->setFlash(__('The foto could not be saved. Please, try again.'));
-			}
+			$destino = WWW_ROOT.'files'.DS;
+			$rand= rand(1,100000000);
+			if(move_uploaded_file($this->data['Foto']['foto']['tmp_name'], $destino.$rand."_".$this->data['Foto']['foto']['name']) ){  
+				$this->request->data['Foto']['imagen'] = $rand."_".$this->data['Foto']['foto']['name'] ;        	
+				if ($this->Foto->save($this->request->data)) {
+					$this->Session->setFlash(__('El archivo se a guardado'));
+				} else {
+					$this->Session->setFlash(__('Problemas al subir el archivo'));
+				}
+	           	return $this->redirect(array('action' => 'index'));
+	        }
+	        else{
+	           	$this->Session->setFlash(__('El archivo no se pudo subir, por favor intentelo de nuevo'));       
+	       	return $this->redirect(array('action' => 'index'));
+	        }
+			
 		}
 		$productos = $this->Foto->Producto->find('list');
 		$this->set(compact('productos'));

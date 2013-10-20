@@ -43,6 +43,15 @@
 						<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'fotos', 'action' => 'delete', $foto['id']), null, __('¿Eliminar Imagen?', $foto['id'])); ?>
 					<?php endforeach; ?>
 
+					<?php echo $this->Form->create('Foto',array('type'=>'file')); ?>
+					<legend><?php echo __('Add Foto'); ?></legend>
+					<?php
+						echo $this->Form->input('producto_id', array('default'=>'Producto.id'));
+
+						echo $this->Form->input('foto',array('type'=>'file','label'=>''));
+						echo $this->Form->input('imagen',array('type'=>'hidden','label'=>''));
+					?>
+					<?php echo $this->Form->end(__('Submit')); ?>
 
 
 					
