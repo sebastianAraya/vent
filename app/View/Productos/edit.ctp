@@ -34,50 +34,29 @@
 					</div>
                 </div>
                 <div class="tab-pane" id="lB">
-
+					<div class="row">
                   	<?php foreach ($producto['Foto'] as $foto): ?>
-						<?php //echo $foto['id']; ?>
-						<?php //echo $foto['producto_id']; ?>
-						<?php echo $foto['imagen']; ?>
-						array('type' => 'file')
-						<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'fotos', 'action' => 'delete', $foto['id']), null, __('¿Eliminar Imagen?', $foto['id'])); ?>
+                  		<div class="span3 fotos">
+
+						<?php echo $this->Html->image('../files/'.$foto['imagen']); ?></a>
+						<h2>
+
+						<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'fotos', 'action' => 'delete', $foto['id']), null, __('¿Eliminar Imagen?', $foto['id'])); ?>
+						</h2>
+						</div>
 					<?php endforeach; ?>
-
+					</div>
 					<?php echo $this->Form->create('Foto',array('type'=>'file')); ?>
-					<legend><?php echo __('Add Foto'); ?></legend>
+					<legend><?php echo __('Nueva Imagen'); ?></legend>
 					<?php
-						echo $this->Form->input('producto_id', array('default'=>'Producto.id'));
-
 						echo $this->Form->input('foto',array('type'=>'file','label'=>''));
 						echo $this->Form->input('imagen',array('type'=>'hidden','label'=>''));
 					?>
-					<?php echo $this->Form->end(__('Submit')); ?>
+					<br />
+					<?php echo $this->Form->end(__('Subir')); ?>
 
-
-					
                 </div>
 			</div>
 		</div>
 	<br />
 </section>
-
-
-<!--
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Producto.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Producto.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Productos'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Fotos'), array('controller' => 'fotos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Foto'), array('controller' => 'fotos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categorias'), array('controller' => 'categorias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Categoria'), array('controller' => 'categorias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Solicitudes'), array('controller' => 'solicitudes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Solicitude'), array('controller' => 'solicitudes', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
--->

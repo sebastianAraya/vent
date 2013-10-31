@@ -10,17 +10,15 @@
 		    <?php echo $this->Paginator->sort('cantidad'); ?>
 			</section>
 			<section class="main-content">
-
-
 				<div class="row">						
 					<div class="span9">	
 				<h3><?php echo $this->Html->link(__('NUEVO PRODUCTO'), array('action' => 'add')); ?></h3>
-
 						<?php $cantidad = $this->Paginator->counter(array('format' => __('{:count}') ));if( strcmp( $cantidad , '0') != 0 ){ ?> 
 							<ul class="thumbnails listing-products">
 								<?php foreach ($productos as $producto): ?>
 								<li class="span3">
 									<div class="product-box">
+										
 										<span class="sale_tag">
 											<?php 
 											echo $this->Form->postLink( $this->Html->image('images/elim.png', 
@@ -28,11 +26,18 @@
 													array('action' => 'delete', $producto['Producto']['id']), 
 													array('escape' => false), __('¿Estás seguro que quieres eliminar este producto?', $producto['Producto']['id'])); ?>
 										</span>
+										
 										<p> 
 											<?php 
 											echo $this->Html->link(__('Editar'), array('action' => 'edit', $producto['Producto']['id']));
-											echo $this->Html->link( $this->Html->image('fotos/sin_imagen.jpg'), array('action' => 'view', $producto['Producto']['id']),array('escape' => false)); ?>
+											if( $producto['Foto'] == null){
+												echo $this->Html->link( $this->Html->image('fotos/sin_imagen.jpg',array('class'=>'fot_pro')), array('action' => 'view', $producto['Producto']['id']),array('escape' => false)); 
+											}else{
+												echo $this->Html->link( $this->Html->image('../files/'.$producto['Foto'][0]['imagen'], array('class'=>'fot_pro')), array('action' => 'view', $producto['Producto']['id']),array('escape' => false)); 
+											}
+											?>
 										<br/>
+
 										<a href="product_detail.html" class="title"><?php echo h($producto['Producto']['nombre']); ?></a><br/>
 										<a href="#" class="category">Categoria hola xd</a>
 										<p class="price"><?php echo h($producto['Producto']['precio']); ?></p>

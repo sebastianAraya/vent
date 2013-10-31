@@ -13,7 +13,6 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -21,22 +20,15 @@
 		<?php 
 			echo $this->Html->css('bootstrap.min');
 			echo $this->Html->css('bootstrap-responsive.min');
-   			echo $this->Html->css('themes/bootstrappage');
-   			echo $this->Html->css('themes/flexslider');
-   			echo $this->Html->css('themes/main');
-		?>
-		
-		<!-- scripts -->
+   			echo $this->Html->css('bootstrappage');
+   			echo $this->Html->css('flexslider');
+   			echo $this->Html->css('main');
 
-		<?php 
-			echo $this->Html->script('themes/jquery-1.7.2.min');
+			echo $this->Html->script('jquery-1.7.2.min');
             echo $this->Html->script('bootstrap.min'); 
-            echo $this->Html->script('themes/superfish'); 
-            echo $this->Html->script('themes/jquery.scrolltotop');
-
-			echo $this->Html->script('themes/common'); 
-            echo $this->Html->script('themes/jquery.flexslider-min'); 
-            
+            echo $this->Html->script('superfish'); 
+            echo $this->Html->script('jquery.scrolltotop');
+            echo $this->Html->script('jquery.fancybox');
         ?>
 </head>
 <body>
@@ -59,7 +51,30 @@
 					<a href="index.html" class="logo pull-left">
 						<?php echo $this->Html->image('images/logo.png'); ?></a>
 					<nav id="menu" class="pull-right">
-						<?= $this->element('categorias/main'); ?>
+						<ul>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>														
+							<li><a href="./products.html">Mujer</a></li>			
+							<li><a href="./products.html">Servicios</a>
+								<ul>									
+									<li><a href="./products.html">manos cony </a></li>
+									<li><a href="./products.html">pag amorchines</a></li>
+									<li><a href="./products.html">otros</a></li>
+								</ul>
+							</li>							
+							<li><a href="./products.html">otros productos</a></li>
+							<li><a href="./products.html">Destacados</a></li>
+						</ul>
 					</nav>
 				</div>
 			</section>
@@ -107,6 +122,10 @@
 			</section>
 		</div>
 		
+<?php
+		echo $this->Html->script('common'); 
+        echo $this->Html->script('jquery.flexslider-min');   
+?>
 		<script type="text/javascript">
 			$(function() {
 				$(document).ready(function() {
