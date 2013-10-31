@@ -6,7 +6,13 @@
 body{
 	font-size: 12px;
 	font-family: 'Open Sans', arial, tahoma, sans-serif;
-	background:url(../images/bg.png) repeat 0 0 fixed;
+
+	background: url(../images/fondo2.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
 }
 label, input, button, select, textarea{
 	font-size: 12px;

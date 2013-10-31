@@ -22,8 +22,10 @@ class ProductosController extends AppController {
  */
 
 	public function index() {
-		$this->Producto->recursive = 0;
-		$this->paginate = array('limit' => 9 );
+		$this->Producto->recursive = 1;
+		$this->paginate = array(
+			'limit' => 9
+		);
 		$this->set('productos', $this->Paginator->paginate());
 	}
 
@@ -87,16 +89,16 @@ class ProductosController extends AppController {
 					} else {
 						$this->Session->setFlash(__('Problemas al subir el archivo'));
 					}
-		           	return $this->redirect(array('action' => 'index'));
+		           	return $this->redirect(array('action' => 'index/'.$id));
 		        }
 		        else{
 		           	$this->Session->setFlash(__('El archivo no se pudo subir, intente nuevamente'));       
-		       		return $this->redirect(array('action' => 'index'));
+		       		return $this->redirect(array('action' => 'index/'.$id));
 		        }
 			}
 			else{
 				if ($this->Producto->save($this->request->data)) {
-					$this->Session->setFlash(__('The producto has been saved.'));
+					$this->Session->setFlash(__('Se ha actualizado el producto.'));
 					return $this->redirect(array('action' => 'index'));
 				} else {
 					$this->Session->setFlash(__('El producto no se puede editar, intente nuevamente.'));

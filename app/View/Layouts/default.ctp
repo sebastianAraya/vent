@@ -13,7 +13,6 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -21,22 +20,15 @@
 		<?php 
 			echo $this->Html->css('bootstrap.min');
 			echo $this->Html->css('bootstrap-responsive.min');
-   			echo $this->Html->css('themes/bootstrappage');
-   			echo $this->Html->css('themes/flexslider');
-   			echo $this->Html->css('themes/main');
-		?>
-		
-		<!-- scripts -->
+   			echo $this->Html->css('bootstrappage');
+   			echo $this->Html->css('flexslider');
+   			echo $this->Html->css('main');
 
-		<?php 
-			echo $this->Html->script('themes/jquery-1.7.2.min');
+			echo $this->Html->script('jquery-1.7.2.min');
             echo $this->Html->script('bootstrap.min'); 
-            echo $this->Html->script('themes/superfish'); 
-            echo $this->Html->script('themes/jquery.scrolltotop');
-
-			echo $this->Html->script('themes/common'); 
-            echo $this->Html->script('themes/jquery.flexslider-min'); 
-            
+            echo $this->Html->script('superfish'); 
+            echo $this->Html->script('jquery.scrolltotop');
+            echo $this->Html->script('jquery.fancybox');
         ?>
 </head>
 <body>
@@ -62,7 +54,16 @@
 						<ul>
 							<li><a href="./products.html">Hombre</a>					
 								
-							</li>															
+							</li>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>
+							<li><a href="./products.html">Hombre</a>					
+								
+							</li>														
 							<li><a href="./products.html">Mujer</a></li>			
 							<li><a href="./products.html">Servicios</a>
 								<ul>									
@@ -121,6 +122,10 @@
 			</section>
 		</div>
 		
+<?php
+		echo $this->Html->script('common'); 
+        echo $this->Html->script('jquery.flexslider-min');   
+?>
 		<script type="text/javascript">
 			$(function() {
 				$(document).ready(function() {
