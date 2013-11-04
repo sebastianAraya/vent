@@ -38,13 +38,9 @@ class AppController extends Controller {
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
     	$this->set('categories', $this->Categoria->find("all"));
+    	$this->set('subcats', $this->Subcategoria->find("all"));
     	
 
-    }
-    public function view($id = null){
-    	$this->loadModel('Subcategoria');
-    	$this->set('subcats', $this->Subcategoria->findCategoriaId($id));
-    	return $subcats;
     }
 	
 }
