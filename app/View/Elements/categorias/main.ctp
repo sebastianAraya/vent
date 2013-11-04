@@ -1,6 +1,10 @@
 
 <ul>
+<li>
+<a href="#">+</a>
+</li>
 <? 
+
     foreach($categories as $categoria) : 
 ?>
 
@@ -15,6 +19,9 @@
 				</li>
 	    	<?endif;?>
 	    <? endforeach; ?>
+	    <li>
+			<a href="#">+</a>
+		</li>
 	    </ul>
     </li>
 <? endforeach; ?>
