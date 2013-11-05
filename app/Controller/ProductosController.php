@@ -29,7 +29,7 @@ class ProductosController extends AppController {
                         'type' => 'INNER',
                         'foreignKey' => null,
                         'conditions'=> array('categoriaProductos.producto_id = Producto.id',
-                        	'categoriaProductos.categoria_id' => '1'
+                        	'categoriaProductos.categoria_id' => $catego
                         )
                     )
                   )
