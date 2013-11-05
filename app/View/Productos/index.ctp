@@ -1,3 +1,4 @@
+
 			<section class="header_text sub">
 				<h4><span>Productos</span></h4>
 			</section>
@@ -9,7 +10,7 @@
 		    <?php echo $this->Paginator->sort('fecha'); ?>,      
 		    <?php echo $this->Paginator->sort('cantidad'); ?>
 			</section>
-			<section class="main-content">
+			<section class="main-content container">
 				<div class="row">						
 					<div class="span9">	
 				<h3><?php echo $this->Html->link(__('NUEVO PRODUCTO'), array('action' => 'add')); ?></h3>
@@ -37,9 +38,13 @@
 											}
 											?>
 										<br/>
+										<?php 
+											echo $this->Html->link( $producto['Producto']['nombre'], array('action' => 'view', $producto['Producto']['id']),array('escape' => false,'class'=>'title')); 
+											echo '<br/>Categoria: ';
+											foreach ($producto['Categoria'] as $catego):
+														echo $this->Html->link($catego['nombre'].' ',array('controller'=>'productos','action'=>'index/'.$catego['id']),array('class'=>'category'));
+														endforeach;	?>
 
-										<a href="product_detail.html" class="title"><?php echo h($producto['Producto']['nombre']); ?></a><br/>
-										<a href="#" class="category">Categoria hola xd</a>
 										<p class="price"><?php echo h($producto['Producto']['precio']); ?></p>
 									</div>
 								</li>   

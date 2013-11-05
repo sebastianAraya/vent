@@ -1,8 +1,7 @@
-<section class="header_text sub">
-			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
+		<section class="header_text sub">
 				<h4><span>Detalles del producto</span></h4>
 			</section>
-			<section class="main-content">				
+			<section class="main-content container">				
 				<div class="row">						
 					<div class="span9">
 						<div class="row">
@@ -31,21 +30,13 @@
 		<li><?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?> </li></h4>
 		
 								<address>
-									<strong>Nombre:</strong> <span><?php echo __('Nombre'); ?></span><br>
+									<strong>Nombre:</strong> <span><?php echo h($producto['Producto']['nombre']);?></span><br>
 									<strong>Codigo Producto:</strong> <span>C- <?php echo h($producto['Producto']['id']); ?> </span><br>
 									<strong>Disponibilidad:</strong> <span style="color:green">Disponible</span> <br>
 									<strong>Numero de veces que se solicita este producto:</strong> <span> <?php echo $producto['Producto']['cantidad']; ?></span><br>				<strong>Subido el:</strong> <span><?php echo $producto['Producto']['fecha']; ?></span><br>
 									<strong>Dueñ@ del producto:</strong> <span><?php echo $this->Html->link($producto['User']['id'], array('controller' => 'users', 'action' => 'view', $producto['User']['id'])); ?></span><br>
 								</address>									
 								<h4><strong>Precio: $<?php echo h($producto['Producto']['precio']); ?> </strong></h4>
-							</div>
-							<div class="span5">
-								<form class="form-inline">
-									<p>&nbsp;</p>
-									<label>Cantidad:</label>
-									<input type="text" class="span1" placeholder="1">
-									<button class="btn btn-inverse" type="submit">Agregar a la compra</button>
-								</form>
 							</div>							
 						</div>
 						<div class="row">
@@ -60,6 +51,12 @@
 									
 								</div>							
 							</div>						
+								<form class="form-inline">
+									<p>&nbsp;</p>
+									<label>Cantidad:</label>
+									<input type="text" class="span1" placeholder="1">
+									<button class="btn btn-inverse" type="submit">Agregar a la compra</button>
+								</form>
 							<div class="span9">	
 								<br>
 								<h4 class="title">

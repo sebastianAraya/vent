@@ -48,6 +48,18 @@ class PagesController extends AppController {
  */
 	public function display() {
 		$path = func_get_args();
+		$hola = 1;
+
+		$this->loadModel('Producto');
+		$productos = $this->Producto->find('all', array(
+				'limit' => 12,
+				'order' => 'fecha',
+			));
+		$productos2 = $this->Producto->find('all', array(
+				'limit' => 12,
+				'order' => 'cantidad',
+			));
+		$this->set(compact('productos','productos2'));
 
 		$count = count($path);
 		if (!$count) {

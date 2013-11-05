@@ -49,32 +49,9 @@
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
 					<a href="index.html" class="logo pull-left">
-						<?php echo $this->Html->image('images/logo.png'); ?></a>
+						<?php // echo $this->Html->image('images/logo.png'); ?></a>
 					<nav id="menu" class="pull-right">
-						<ul>
-							<li><a href="./products.html">Hombre</a>					
-								
-							</li>
-							<li><a href="./products.html">Hombre</a>					
-								
-							</li>
-							<li><a href="./products.html">Hombre</a>					
-								
-							</li>
-							<li><a href="./products.html">Hombre</a>					
-								
-							</li>														
-							<li><a href="./products.html">Mujer</a></li>			
-							<li><a href="./products.html">Servicios</a>
-								<ul>									
-									<li><a href="./products.html">manos cony </a></li>
-									<li><a href="./products.html">pag amorchines</a></li>
-									<li><a href="./products.html">otros</a></li>
-								</ul>
-							</li>							
-							<li><a href="./products.html">otros productos</a></li>
-							<li><a href="./products.html">Destacados</a></li>
-						</ul>
+						<?= $this->element('categorias/main'); ?>
 					</nav>
 				</div>
 			</section>
@@ -104,7 +81,7 @@
 						</ul>
 					</div>
 					<div class="span5">
-						<p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
+						<p class="logo"> <?php echo $this->Html->image('images/2logo.png',array('class'=>'site_logo')); ?> </p>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
 						<br/>
 						<span class="social_icons">

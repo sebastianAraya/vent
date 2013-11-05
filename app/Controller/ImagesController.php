@@ -15,16 +15,12 @@ class ImagesController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-
 			// set the upload destination folder
 			$destination = realpath('../../app/webroot/img/uploads/') . '/';
-
 			// grab the file
 			$file = $this->data['Image']['filedata'];
-
 			// upload the image using the upload component
 			$result = $this->Upload->upload($file, $destination, null, array('type' => 'resizecrop', 'size' => array('400', '300'), 'output' => 'jpg'));
-
 			if (!$result){
 				$this->data['Image']['images'] = $this->Upload->result;
 			} else {

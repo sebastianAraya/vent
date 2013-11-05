@@ -6,7 +6,7 @@
 body{
 	font-size: 12px;
 	font-family: 'Open Sans', arial, tahoma, sans-serif;
-	background: url(../images/fondo2.jpg) no-repeat center center fixed;
+	background: url(../img/images/fondo2.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -79,6 +79,7 @@ a:hover{
 	-moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
 	-webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
 	padding:0px 10px;
+	width: 100%;
 }
 section.homepage-slider,
 section.navbar,
@@ -89,7 +90,7 @@ section#copyright{
 	margin-right: -10px;	
 }
 section.header_text{
-	background:url(../images/bg_h.png) no-repeat bottom;
+	background:url(../img/images/bg_h.png) no-repeat bottom;
 	text-align:center;
 	padding:15px 0 20px 0;
 	font-size:16px;
@@ -151,6 +152,7 @@ iframe{
 /* top bar
 ----------------------------------------------------------------------------- */
 #top-bar{
+	width: 100%;
 	background-color:#fff;
 	padding:10px;
 	margin: 20px auto -22px auto;
@@ -215,7 +217,7 @@ section#footer-bar  a:hover{
 	text-decoration:underline;	
 }
 section#footer-bar  .nav a{
-	background: url(../images/trigger_right.png) no-repeat 5px 7px;
+	background: url(../img/images/trigger_right.png) no-repeat 5px 7px;
 }
 section#footer-bar h4 {
 	padding: 0;
@@ -230,7 +232,7 @@ section#footer-bar .social_icons a {
 	width: 29px;
 	height: 28px;
 	text-indent: -9999px;
-	background-image: url(../images/social-icons.png);
+	background-image: url(../img/images/social-icons.png);
 	background-repeat: no-repeat;
 	margin-right: 10px;
 	-webkit-transition: all 0.4s;
@@ -372,7 +374,7 @@ section.navbar{
     top: 0px;
 }
 #menu li.sfHover > a{
-	color:#eb4800;
+	color:#00AD00;
 }
 #menu .sf-sub-indicator{
 	display:none;
@@ -388,7 +390,7 @@ section.navbar{
 }
 .feature_box img{	
 	margin-bottom:10px;
-	background-color:#eb4800;
+	background-color:#00AD00;
 	padding:25px;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;	
@@ -426,7 +428,7 @@ section.navbar{
 	border-bottom:1px solid #eee;
 }
 .product-box span.sale_tag {
-	background: url(../images/sprites.png) no-repeat scroll 0 0 transparent;
+	background: url(../img/images/sprites.png) no-repeat scroll 0 0 transparent;
 	height: 54px;
 	position: absolute;
 	width: 55px;
@@ -470,7 +472,7 @@ section.navbar{
 /* title style for h4 tag
 ----------------------------------------------------------------------------- */
 h4.title{
-	background: url(../images/line_bar.png) 0 8px repeat-x;
+	background: url(../img/images/line_bar.png) 0 8px repeat-x;
 	padding-bottom:5px;
 	margin-bottom:15px;
 	overflow:hidden;
@@ -492,11 +494,11 @@ h4.title span.text{
 	padding-right:10px;
 }
 h4.title .left{
-	background: url(../images/arrow-pleft.png) #eee no-repeat center center;	
+	background: url(../img/images/arrow-pleft.png) #eee no-repeat center center;	
 	margin-right:2px;	
 }
 h4.title .right{
-	background: url(../images/arrow-p.png) #eee no-repeat center center;	
+	background: url(../img/images/arrow-p.png) #eee no-repeat center center;	
 }
 h4.title .pull-right{
 	background-color:#fff;
@@ -509,7 +511,7 @@ h4.title .left,h4.title .right{
 	cursor: pointer;
 }
 h4.title .left:hover,h4.title .right:hover{
-	background-color:#eb4800;
+	background-color:#00D800;
 }
 h4.title .button:hover{
 	text-decoration: none;
@@ -529,7 +531,7 @@ section.our_client .row{
 	margin-bottom:0;
 }
 .search_form input{
-	background: url(../images/search.png) #fff no-repeat 97% 6px;
+	background: url(../img/images/search.png) #fff no-repeat 97% 6px;
 	color:#fff;
 	text-shadow:none;
 	padding-right:25px;	
@@ -657,7 +659,7 @@ section.our_client .row{
 	margin-bottom:-30px;
 }
 .block h4{
-	background: url(../images/bg_h.png) no-repeat bottom left;
+	background: url(../img/images/bg_h.png) no-repeat bottom left;
 	margin: 0 0 20px 0;
 	border-bottom:1px solid #eee;	
 }
@@ -666,14 +668,14 @@ section.our_client .row{
 /* Navigation list */
 .nav-header{
 	color:#333;
-	background: url(../images/bg_h.png) no-repeat bottom left;
+	background: url(../img/images/bg_h.png) no-repeat bottom left;
 	margin-bottom:10px;
 }
 .nav-list li{
 	text-align:left;
 }
 .nav-list li a{
-	background: url(../images/trigger_right.png) transparent no-repeat 5px 8px;
+	background: url(../img/images/trigger_right.png) transparent no-repeat 5px 8px;
 }
 .nav-list > .active > a, .nav-list > .active > a:hover{
 	background-color: transparent;
@@ -716,10 +718,10 @@ section.our_client .row{
     padding:10px 0;
 	text-align:center;	
 	font-weight:bold;
-	background:url(../images/i_submenu.png) no-repeat 98% center;
+	background:url(../img/images/i_submenu.png) no-repeat 98% center;
 }
 ._toggleMenu ul  > li a.parent{
-	background:url(../images/i_plus.png) no-repeat 98% center;
+	background:url(../img/images/i_plus.png) no-repeat 98% center;
 }
 ._toggleMenu .nav  ul{
 	list-style: none;
@@ -817,4 +819,5 @@ section.our_client .row{
 .fot_pro{
 	max-height: 270px;
 	min-height: 270px;
+	min-width: 100%;
 }

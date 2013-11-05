@@ -1,11 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Productos Controller
- *
- * @property Producto $Producto
- * @property PaginatorComponent $Paginator
- */
+
+
 class ProductosController extends AppController {
 
 /**
@@ -21,11 +17,31 @@ class ProductosController extends AppController {
  * @return void
  */
 
-	public function index() {
+	public function index($catego =null) {
 		$this->Producto->recursive = 1;
-		$this->paginate = array(
-			'limit' => 9
-		);
+		if($catego!=null){
+			$this->paginate = array(
+				'joins' =>
+                   array(
+                    array(
+                        'table' => 'categorias_productos',
+                        'alias' => 'categoriaProductos',
+                        'type' => 'INNER',
+                        'foreignKey' => null,
+                        'conditions'=> array('categoriaProductos.producto_id = Producto.id',
+                        	'categoriaProductos.categoria_id' => '1'
+                        )
+                    )
+                  )
+                ,'limit' => 9
+			);
+		}
+		else{
+			$this->paginate = array(
+				'limit' => 9
+			);
+		}
+
 		$this->set('productos', $this->Paginator->paginate());
 	}
 
@@ -53,8 +69,8 @@ class ProductosController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Producto->create();
 			if ($this->Producto->save($this->request->data)) {
-				$this->Session->setFlash(__('The producto has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('El producto ha sido creado'));
+				return $this->redirect(array('action' => 'edit/'.$this->Producto->id.'/0'));
 			} else {
 				$this->Session->setFlash(__('The producto could not be saved. Please, try again.'));
 			}
@@ -72,7 +88,7 @@ class ProductosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null, $tipo =null) {
+	public function edit($id = null, $tipo=1) {
 		if (!$this->Producto->exists($id)) {
 			throw new NotFoundException(__('Invalid producto'));
 		}
@@ -89,11 +105,11 @@ class ProductosController extends AppController {
 					} else {
 						$this->Session->setFlash(__('Problemas al subir el archivo'));
 					}
-		           	return $this->redirect(array('action' => 'index/'.$id));
+		           	return $this->redirect(array('action' => 'edit/'.$id.'/0'));
 		        }
 		        else{
 		           	$this->Session->setFlash(__('El archivo no se pudo subir, intente nuevamente'));       
-		       		return $this->redirect(array('action' => 'index/'.$id));
+		       		return $this->redirect(array('action' => 'index'));
 		        }
 			}
 			else{
@@ -128,13 +144,13 @@ class ProductosController extends AppController {
 	public function delete($id = null) {
 		$this->Producto->id = $id;
 		if (!$this->Producto->exists()) {
-			throw new NotFoundException(__('Invalid producto'));
+			throw new NotFoundException(__('Producto invalido'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Producto->delete()) {
-			$this->Session->setFlash(__('The producto has been deleted.'));
+			$this->Session->setFlash(__('El producto fue eliminado'));
 		} else {
-			$this->Session->setFlash(__('The producto could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('ERROR: El producto no fue eliminado. Intente nuevamente.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}

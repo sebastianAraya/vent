@@ -25,93 +25,19 @@ class FotosController extends AppController {
 		$this->set('fotos', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Foto->exists($id)) {
-			throw new NotFoundException(__('Invalid foto'));
-		}
-		$options = array('conditions' => array('Foto.' . $this->Foto->primaryKey => $id));
-		$this->set('foto', $this->Foto->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Foto->create();
-			$destino = WWW_ROOT.'files'.DS;
-			$rand= rand(1,100000000);
-			if(move_uploaded_file($this->data['Foto']['foto']['tmp_name'], $destino.$rand."_".$this->data['Foto']['foto']['name']) ){  
-				$this->request->data['Foto']['imagen'] = $rand."_".$this->data['Foto']['foto']['name'] ;        	
-				if ($this->Foto->save($this->request->data)) {
-					$this->Session->setFlash(__('El archivo se a guardado'));
-				} else {
-					$this->Session->setFlash(__('Problemas al subir el archivo'));
-				}
-	           	return $this->redirect(array('action' => 'index'));
-	        }
-	        else{
-	           	$this->Session->setFlash(__('El archivo no se pudo subir, por favor intentelo de nuevo'));       
-	       	return $this->redirect(array('action' => 'index'));
-	        }
-			
-		}
-		$productos = $this->Foto->Producto->find('list');
-		$this->set(compact('productos'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Foto->exists($id)) {
-			throw new NotFoundException(__('Invalid foto'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Foto->save($this->request->data)) {
-				$this->Session->setFlash(__('The foto has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The foto could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Foto.' . $this->Foto->primaryKey => $id));
-			$this->request->data = $this->Foto->find('first', $options);
-		}
-		$productos = $this->Foto->Producto->find('list');
-		$this->set(compact('productos'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function delete($id = null) {
+		$temp = $this->Foto->findById($id);
+		debug($temp);
+		
 		$this->Foto->id = $id;
 		if (!$this->Foto->exists()) {
 			throw new NotFoundException(__('Invalid foto'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Foto->delete()) {
-			$this->Session->setFlash(__('The foto has been deleted.'));
+			$this->Session->setFlash(__('La imagen ha sido eliminada'));
 		} else {
-			$this->Session->setFlash(__('The foto could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('La imagen no pudo ser eliminada. Intente nuevamente'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('controller'=>'productos','action' => 'edit/'.$temp['Producto']['id'].'/0'));
 	}}

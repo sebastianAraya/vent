@@ -4,14 +4,25 @@
 	<p><?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $this->Form->value('Producto.id')), null,'¿Estás seguro de eliminar este producto?'); ?>
 	</p>
 </section>
-<section class="asdf">
+<section class="main-content container">
 	<div class="tabbable tabs-left">
     	<ul class="nav nav-tabs">
-        	<li class="active"><a href="#lA" data-toggle="tab">Información</a></li>
-            	<li><a href="#lB" data-toggle="tab">Imagenes</a></li>
+    		<?php if($tipo==1){
+        		echo '<li class="active"><a href="#lA" data-toggle="tab">Información</a></li>';
+            	echo '<li><a href="#lB" data-toggle="tab">Imagenes</a></li>';
+            }
+            else{
+            	echo '<li><a href="#lA" data-toggle="tab">Información</a></li>';
+            	echo '<li class="active"><a href="#lB" data-toggle="tab">Imagenes</a></li>';
+            }
+            ?>
             </ul>
         	<div class="tab-content">
-                <div class="tab-pane active" id="lA">
+        		<?php if($tipo==1)
+        			echo '<div class="tab-pane active" id="lA">';
+      			else
+      				echo '<div class="tab-pane" id="lA">';
+      			?>
                 	<div class="span5" >
 					<?php echo $this->Form->create('Producto'); ?>
                     <?php
@@ -33,7 +44,11 @@
 					?>
 					</div>
                 </div>
-                <div class="tab-pane" id="lB">
+                <?php if($tipo==1)
+        			echo '<div class="tab-pane" id="lB">';
+      			else
+      				echo '<div class="tab-pane active" id="lB">';
+      			?>
 					<div class="row">
                   	<?php foreach ($producto['Foto'] as $foto): ?>
                   		<div class="span3 fotos">
