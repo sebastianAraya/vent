@@ -15,6 +15,12 @@ class User extends AppModel {
  *
  * @var array
  */
+public function beforeSave($option = login) {
+	    if (isset($this->data['User']['password'])) {
+	        $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+	    }
+	    return true;
+	}
 	public $hasMany = array(
 		'Producto' => array(
 			'className' => 'Producto',

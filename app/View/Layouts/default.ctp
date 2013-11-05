@@ -39,7 +39,7 @@
 						<ul class="user-menu">				
 							<li><a href="cart.html">Ver Pedido actual</a></li>
 							<li><a href="checkout.html">Enviar Pedido</a></li>
-							<li><a href="Login.php">Login</a></li>	
+							<li><?php echo $this->Html->link('Login',array('controller' => 'users', 'action' => 'login'));?></li>
 						</ul>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 		</div>
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
-				<div class="navbar-inner main-menu">				
+				<div class="navbar-inner main-menu" style="padding: 0px;">				
 					<a href="index.html" class="logo pull-left">
 						<?php // echo $this->Html->image('images/logo.png'); ?></a>
 					<nav id="menu" class="pull-right">

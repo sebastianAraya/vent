@@ -32,13 +32,24 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	//
+	public $components = array(
+        'Session',
+        'Auth' => array(
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+        	)
+        );
+     public function rol(){
+     	$user = $this->Session->read('Auth.User');
+     	return $user['role'];	 
+     }
 
     public function beforeFilter() {
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
     	$this->set('categories', $this->Categoria->find("all"));
     	$this->set('subcats', $this->Subcategoria->find("all"));
+    	$this->set('rol', $this->rol());
+    	$this->Auth->allow('login','index','display');
     	
 
     }

@@ -20,6 +20,33 @@ class UsersController extends AppController {
  *
  * @return void
  */
+	public function isAuthorized($user) {
+	    if ($user['role'] == 'gerente') {
+	        return true;
+	    }
+	    if (in_array($this->action, array('edit', 'delete'))) {
+	        if ($user['id'] != $this->request->params['pass'][0]) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+	/**********************************************************/
+	public function login() {
+	    if ($this->request->is('post')) {
+	        if ($this->Auth->login()) {
+				$rol = $this->Auth->User('role');
+				/*si inicia sesion, ontiene su rol y lo manda a la vista correspondiente*/
+	            $this->redirect($this->Auth->redirect( array('controller' => 'pages', 'action' => 'display', $rol)));   
+	        } else {
+	            $this->Session->setFlash('Usuario/Contraseña inválidos');
+	        }
+	    }
+	}
+	/*********************************************************/
+	public function logout() {
+	    $this->redirect($this->Auth->logout());
+	}
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
