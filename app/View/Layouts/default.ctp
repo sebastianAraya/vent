@@ -51,7 +51,7 @@
 					<a href="index.html" class="logo pull-left">
 						<?php // echo $this->Html->image('images/logo.png'); ?></a>
 					<nav id="menu" class="pull-right">
-						<?= $this->element('categorias/main'); ?>
+						<?php echo $this->element('categorias/main'); ?>
 					</nav>
 				</div>
 			</section>
