@@ -49,9 +49,6 @@ class AppController extends Controller {
     	$this->set('categories', $this->Categoria->find("all"));
     	$this->set('subcats', $this->Subcategoria->find("all"));
     	$this->set('rol', $this->rol());
-    	$this->Auth->allow('login','index','display');
-    	
-
+    	$this->Auth->allow('login','index','display','add','view','edit');
     }
-	
 }
