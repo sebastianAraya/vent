@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<div id="wrapper" class="container">
-			<section class="navbar main-menu">
+			<section class="navbar main-menu" style="margin: 0px;">
 				<div class="navbar-inner main-menu" style="padding: 0px;">				
 					<a href="index.html" class="logo pull-left">
 						<?php // echo $this->Html->image('images/logo.png'); ?></a>
@@ -59,7 +59,7 @@
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 			
-			<section id="footer-bar">
+			<section id="footer-bar" style="margin: 0px;">
 				<div class="row">
 					<div class="span3">
 						<h4>Navigation</h4>
@@ -94,7 +94,7 @@
 				</div>	
 			</section>
 			
-			<section id="copyright">
+			<section id="copyright" style="margin-left: 0px; margin-right: 0px;">
 				<span>asdf</span>
 			</section>
 		</div>

@@ -821,3 +821,9 @@ section.our_client .row{
 	min-height: 270px;
 	min-width: 100%;
 }
+
+.container{
+padding-left:0 !important;
+padding-right:0 !important;
+margin: 0 auto !important;
+}

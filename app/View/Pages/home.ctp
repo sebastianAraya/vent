@@ -1,4 +1,4 @@
-			<section  class="homepage-slider" id="home-slider">
+			<section  class="homepage-slider" id="home-slider" style="margin: 0px;">
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
