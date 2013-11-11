@@ -1,3 +1,4 @@
+
 		<section class="header_text sub">
 				<h4><span>Detalles del producto</span></h4>
 			</section>
@@ -6,28 +7,37 @@
 					<div class="span9">
 						<div class="row">
 							<div class="span4">
-								<a href="themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="themes/images/ladies/1.jpg"></a>												
-								<ul class="thumbnails small">								
-									<li class="span1">
-										<a href="/vent/files/55255127_asdf.png" class="thumbnail" data-fancybox-group="group1" title="asdfasdf"><img src="themes/images/ladies/2.jpg" alt=""></a>
-									</li>
-									<li class="span1">
-										<a href="themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="themes/images/ladies/2.jpg" alt=""></a>
-									</li>								
-									<li class="span1">
-										<a href="themes/images/ladies/3.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="themes/images/ladies/3.jpg" alt=""></a>
-									</li>													
-									<li class="span1">
-										<a href="themes/images/ladies/4.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="themes/images/ladies/4.jpg" alt=""></a>
-									</li>
-									<li class="span1">
-										<a href="themes/images/ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="themes/images/ladies/5.jpg" alt=""></a>
-									</li>
-								</ul>
+								<?php if($producto['Foto']!=null){
+									$i=0;
+									foreach ($producto['Foto'] as $foto): 
+										if($i==0){
+											?>
+											<li style="list-style:none"><img src="/vent/files/<?php echo $foto['imagen']; ?>" class="myphotos" rel="group1" data-glisse-big="/vent/files/<?php echo $foto['imagen']; ?>" title="Aenean massa" /></li>
+											<?php
+											//echo '<img src="/vent/files/'.$foto['imagen'].'" class="myphotos" rel="group2">';
+											echo '<ul class="thumbnails small">';
+										}
+										else{
+											?>
+											<li class="span1"><img src="/vent/files/<?php echo $foto['imagen']; ?>" class="myphotos" rel="group1" data-glisse-big= "/vent/files/<?php echo $foto['imagen']; ?>" title="Aenean massa" /></li>
+											<?php
+											//echo '<li class="span1"><img src="/vent/files/';
+											//echo $foto['imagen']; 
+											//echo '" class="myphotos" rel="group2"></li>';
+										}
+										$i++;
+										?>
+									<?php endforeach; ?>
+									</ul>
+						<?php }else{
+							echo 'sin imagen';
+						}
+						?>
 							</div>
 							<div class="span5">
-									<h4><li><?php echo $this->Html->link(__('Edit Producto'), array('action' => 'edit', $producto['Producto']['id'])); ?> </li></h4><h4>
-		<li><?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?> </li></h4>
+									<h4><?php echo $this->Html->link(__('Edit Producto'), array('action' => 'edit', $producto['Producto']['id'])); ?></h4>
+									<h4>
+		<?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?></h4>
 		
 								<address>
 									<strong>Nombre:</strong> <span><?php echo h($producto['Producto']['nombre']);?></span><br>
@@ -35,8 +45,19 @@
 									<strong>Disponibilidad:</strong> <span style="color:green">Disponible</span> <br>
 									<strong>Numero de veces que se solicita este producto:</strong> <span> <?php echo $producto['Producto']['cantidad']; ?></span><br>				<strong>Subido el:</strong> <span><?php echo $producto['Producto']['fecha']; ?></span><br>
 									<strong>Dueñ@ del producto:</strong> <span><?php echo $this->Html->link($producto['User']['id'], array('controller' => 'users', 'action' => 'view', $producto['User']['id'])); ?></span><br>
+									<strong>Categorias: </strong> 
+									<?php foreach ($producto['Categoria'] as $categoria):
+											echo '<span>'.$this->Html->link($categoria['nombre'], array('action' => 'index/'.$categoria['id'])).' </span>';
+									endforeach;?>
 								</address>									
 								<h4><strong>Precio: $<?php echo h($producto['Producto']['precio']); ?> </strong></h4>
+								<br />
+								<form class="form-inline">
+									<p>&nbsp;</p>
+									<label>Cantidad:</label>
+									<input type="text" class="span1" placeholder="1">
+									<button class="btn btn-inverse" type="submit">Agregar a la compra</button>
+								</form>
 							</div>							
 						</div>
 						<div class="row">
@@ -51,12 +72,6 @@
 									
 								</div>							
 							</div>						
-								<form class="form-inline">
-									<p>&nbsp;</p>
-									<label>Cantidad:</label>
-									<input type="text" class="span1" placeholder="1">
-									<button class="btn btn-inverse" type="submit">Agregar a la compra</button>
-								</form>
 							<div class="span9">	
 								<br>
 								<h4 class="title">
@@ -215,46 +230,11 @@
 					</div>
 				</div>
 			</section>		
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Producto Id'); ?></th>
-		<th><?php echo __('Imagen'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($producto['Foto'] as $foto): ?>
-		<tr>
-			<td><?php echo $foto['id']; ?></td>
-			<td><?php echo $foto['producto_id']; ?></td>
-			<td><?php echo $foto['imagen']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'fotos', 'action' => 'view', $foto['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'fotos', 'action' => 'edit', $foto['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'fotos', 'action' => 'delete', $foto['id']), null, __('Are you sure you want to delete # %s?', $foto['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Foto'), array('controller' => 'fotos', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>
-<div class="related">
-
-	<?php foreach ($producto['Categoria'] as $categoria): ?>
-		<tr>
-			<td><?php echo $categoria['id']; ?></td>
-			<td><?php echo $categoria['nombre']; ?></td>
-			<td><?php echo $categoria['foto']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'categorias', 'action' => 'view', $categoria['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'categorias', 'action' => 'edit', $categoria['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'categorias', 'action' => 'delete', $categoria['id']), null, __('Are you sure you want to delete # %s?', $categoria['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-
-</div>
+		   <!-- JS -->
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="/vent/js/glisse.js"></script>
+        <script>
+            $(function () {
+                $('.myphotos').glisse({speed: 500, changeSpeed: 550, effect:'roll', fullscreen: false}); 
+            });
+        </script>

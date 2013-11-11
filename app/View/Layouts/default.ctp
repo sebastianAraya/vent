@@ -24,11 +24,15 @@
    			echo $this->Html->css('flexslider');
    			echo $this->Html->css('main');
 
+   			echo $this->Html->css('app');
+   			echo $this->Html->css('glisse');
+
 			echo $this->Html->script('jquery-1.7.2.min');
             echo $this->Html->script('bootstrap.min'); 
             echo $this->Html->script('superfish'); 
             echo $this->Html->script('jquery.scrolltotop');
             echo $this->Html->script('jquery.fancybox');
+            
         ?>
 </head>
 <body>

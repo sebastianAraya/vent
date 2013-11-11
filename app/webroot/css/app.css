@@ -1,0 +1,39 @@
+.photos{cursor:pointer;}
+
+/* Glisse: Overlay */
+#glisse-overlay {
+  background: rgba(0,0,0.3);}
+
+#glisse-close {
+  height: 96px;
+  width: 96px;
+  text-align: center;
+  position: fixed;
+  top:60px;
+  right:60px;
+  background:url("../img/images/cerrar.png");
+}
+
+
+
+/* Prev/Next button */
+.glisse-next a, .glisse-prev a {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  background:green}
+
+.glisse-next a {
+  left: 50%;
+  margin-left: 20px; }
+
+.glisse-prev a {
+  left: 50%;
+  margin-left: -40px; }
+
+/* Legend */
+.glisse-legend {
+  display:none;}
+
