@@ -2,28 +2,23 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<?php echo $this->Html->image('carousel/banner-1.jpg'); ?>
+							<?php echo $this->Html->image('carousel/imagen1.png'); ?>
 						</li>
 						<li>
-							<?php echo $this->Html->image('carousel/banner-2.jpg'); ?>
-							<div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
-							</div>
+							<?php echo $this->Html->image('carousel/ima1.jpg'); ?>
 						</li>
 					</ul>
 				</div>
 			</section>
 			<section class="header_text container">
-				<div class="row feature_box">						
+				<div class="row feature_box">	
 							<div class="span4">
 								<div class="service">
 									<div class="responsive">
 										<?php echo $this->Html->image('images/feature_img_2.png'); ?>
 										<h4>Quienes <strong>SOMOS</strong></h4>
 
-										<p>Somos una plataforma donde microempresarios tienen una oportunidad para mostrar sus productos y comercializarlos...<a href="#myModal" role="button" data-toggle="modal">Ver más</a></p>									
+										<p>Somos una plataforma donde microempresarios tienen una oportunidad para mostrar sus productos y comercializarlos...<a href="#myModal" role="button" data-toggle="modal">Ver más</a></p>			
 									</div>
 								</div>
 							</div>

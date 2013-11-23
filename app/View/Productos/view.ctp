@@ -235,6 +235,6 @@
         <script src="/vent/js/glisse.js"></script>
         <script>
             $(function () {
-                $('.myphotos').glisse({speed: 500, changeSpeed: 550, effect:'roll', fullscreen: false}); 
+                $('.myphotos').glisse({speed: 500, changeSpeed: 550, effect:'roll', fullscreen: true}); 
             });
         </script>
