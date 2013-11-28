@@ -43,6 +43,7 @@ class ProductosController extends AppController {
 		}
 
 		$this->set('productos', $this->Paginator->paginate());
+		$this->set(compact('catego'));
 	}
 
 /**

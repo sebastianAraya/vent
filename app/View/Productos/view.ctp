@@ -1,7 +1,7 @@
-
-		<section class="header_text sub">
-				<h4><span>Detalles del producto</span></h4>
+			<section class="header_text sub">
+				<h4><span>Productos</span></h4>
 			</section>
+
 			<section class="main-content container">				
 				<div class="row">						
 					<div class="span9">
@@ -29,8 +29,9 @@
 										?>
 									<?php endforeach; ?>
 									</ul>
-						<?php }else{
-							echo 'sin imagen';
+						<?php }
+						else{
+							echo $this->Html->image('fotos/sin_imagen.jpg');
 						}
 						?>
 							</div>
@@ -148,25 +149,7 @@
 						</div>
 					</div>
 					<div class="span3 col">
-						<div class="block">	
-							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-							</ul>
-							<br/>
-							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
-							</ul>
-						</div>
+						<?php echo $this->element('categorias/menu2'); ?>
 						<div class="block">
 							<h4 class="title">
 								<span class="pull-left"><span class="text">Randomize</span></span>

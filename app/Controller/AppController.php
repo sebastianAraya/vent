@@ -45,6 +45,15 @@ class AppController extends Controller {
      }
 
     public function beforeFilter() {
+        $this->loadModel('Producto');
+        $this->set('random_producto', $this->Producto->find('all', array( 
+           'conditions' => array('Producto.mostrar' => '0'), 
+           'order' => 'rand()',
+           'limit' => 3,
+        )));
+
+        $this->set('catego', null);
+
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
     	$this->set('categories', $this->Categoria->find("all"));

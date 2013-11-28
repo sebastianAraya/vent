@@ -37,6 +37,9 @@
 </head>
 <body>
 		<div id="top-bar" class="container">
+
+					<a href="index.html" class="logo pull-left">
+						<?php echo $this->Html->image('images/2logo.png', array('class'=>'logoInicio')); ?></a>
 			<div class="row">
 				<div class="span8 offset4">
 					<div class="account pull-right">
@@ -52,8 +55,6 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu" style="margin: 0px;">
 				<div class="navbar-inner main-menu" style="padding: 0px;">				
-					<a href="index.html" class="logo pull-left">
-						<?php // echo $this->Html->image('images/2logo.png', array('class'=>'logoInicio')); ?></a>
 					<nav id="menu" class="pull-right">
 						<?php echo $this->element('categorias/main'); ?>
 					</nav>

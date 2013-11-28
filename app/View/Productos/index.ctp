@@ -25,12 +25,16 @@
 											echo $this->Form->postLink( $this->Html->image('images/elim.png', 
 													array('style'=>array('max-height'=>'20px'))), 
 													array('action' => 'delete', $producto['Producto']['id']), 
-													array('escape' => false), __('¿Estás seguro que quieres eliminar este producto?', $producto['Producto']['id'])); ?>
+													array('escape' => false), __('¿Estás seguro que quieres eliminar este producto?', $producto['Producto']['id'])); 
+											?>
 										</span>
 										
 										<p> 
 											<?php 
-											echo $this->Html->link(__('Editar'), array('action' => 'edit', $producto['Producto']['id']));
+											echo $this->Html->link(
+													$this->Html->image('images/editar.png', array('style'=>array('max-height'=>'max-height:20px'))), 
+														array('action' => 'edit', $producto['Producto']['id']), array('escape' => false));
+
 											if( $producto['Foto'] == null){
 												echo $this->Html->link( $this->Html->image('fotos/sin_imagen.jpg',array('class'=>'fot_pro')), array('action' => 'view', $producto['Producto']['id']),array('escape' => false)); 
 											}else{
@@ -67,26 +71,9 @@
 							<h1 class='text-center'> NO EXISTEN PRODUCTOS </h1>
 						<?php } ?>
 					</div>
+
 					<div class="span3 col">
-						<div class="block">	
-							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-							</ul>
-							<br/>
-							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
-							</ul>
-						</div>
+						<?php echo $this->element('categorias/menu2'); ?>
 						<div class="block">
 							<h4 class="title">
 								<span class="pull-left"><span class="text">Randomize</span></span>
