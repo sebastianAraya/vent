@@ -47,18 +47,17 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->loadModel('Producto');
         $this->set('random_producto', $this->Producto->find('all', array( 
-           'conditions' => array('Producto.mostrar' => '0'), 
+        //   'conditions' => array('Producto.mostrar' => '0'), 
            'order' => 'rand()',
            'limit' => 3,
         )));
 
         $this->set('catego', null);
-
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
     	$this->set('categories', $this->Categoria->find("all"));
     	$this->set('subcats', $this->Subcategoria->find("all"));
     	$this->set('rol', $this->rol());
-    	$this->Auth->allow('login','index','display','add','view','edit','Conocenos');
+    	$this->Auth->allow('login','index','display','delete','add','view','edit','Conocenos','carrito_compra_add','carrito_compra_delete');
     }
 }

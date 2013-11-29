@@ -43,7 +43,9 @@
 			<div class="row">
 				<div class="span8 offset4">
 					<div class="account pull-right">
-						<ul class="user-menu">				
+						<ul class="user-menu">		
+
+							
 							<li><a href="cart.html">Ver Pedido actual</a></li>
 							<li><a href="checkout.html">Enviar Pedido</a></li>
 							<li><?php echo $this->Html->link('Login',array('controller' => 'users', 'action' => 'login'));?></li>

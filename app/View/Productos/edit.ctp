@@ -53,7 +53,7 @@
                   	<?php foreach ($producto['Foto'] as $foto): ?>
                   		<div class="span3 fotos">
 
-						<?php echo $this->Html->image('../files/'.$foto['imagen']); ?></a>
+						<?php echo $this->Html->image('../files/'.$foto['imagen'], array("style" =>' max-height: 270px;  min-height: 270px;')); ?></a>
 						<h2>
 
 						<?php echo $this->Form->postLink(__('Eliminar'), array('controller' => 'fotos', 'action' => 'delete', $foto['id']), null, __('¿Eliminar Imagen?', $foto['id'])); ?>

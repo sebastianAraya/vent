@@ -16,7 +16,7 @@ class ProductosController extends AppController {
  *
  * @return void
  */
-
+	
 	public function index($catego =null) {
 		$this->Producto->recursive = 1;
 		if($catego!=null){
