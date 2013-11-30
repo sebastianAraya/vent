@@ -36,13 +36,12 @@ class AppController extends Controller {
 	public $components = array(
         'Session',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'pages', 'action' => 'display','home'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
-        )
-    );
+        	)
+        );
      public function rol(){
      	$user = $this->Session->read('Auth.User');
-     	return $user['tipo'];	 
+     	return $user['role'];	 
      }
 
     public function beforeFilter() {
@@ -52,11 +51,13 @@ class AppController extends Controller {
            'order' => 'rand()',
            'limit' => 3,
         )));
+
         $this->set('catego', null);
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
     	$this->set('categories', $this->Categoria->find("all"));
     	$this->set('subcats', $this->Subcategoria->find("all"));
-    	$this->Auth->allow('login','index','display','add','view','edit','Conocenos');
+    	$this->set('rol', $this->rol());
+    	$this->Auth->allow('login','index','display','delete','add','view','edit','Conocenos','carrito_compra_add','carrito_compra_delete');
     }
 }

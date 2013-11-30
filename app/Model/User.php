@@ -1,26 +1,25 @@
 <?php
-App::uses('AppModel', 'Model');
-/**
- * User Model
- *
- * @property Producto $Producto
- */
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel {
 
+	public $displayField = 'nombre';
+	
+	public $validate = array(
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+		'password'=>array(
+		    'Not empty'=>array(
+		        'rule'=>'notEmpty',
+		        'message'=>'Por favor ingrese su contraseña'
+		    ))
+	);
+	public function beforeSave($options = array()) {
+    if (isset($this->data['User']['password'])) {
+        $passwordHasher = new SimplePasswordHasher();
+        $this->data['User']['password'] = $passwordHasher->hash($this->data['User']['password']);
+    }
+    return true;
+}
 
-/**
- * hasMany associations
- *
- * @var array
- */
-public function beforeSave($option = login) {
-	    if (isset($this->data['User']['password'])) {
-	        $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
-	    }
-	    return true;
-	}
 	public $hasMany = array(
 		'Producto' => array(
 			'className' => 'Producto',

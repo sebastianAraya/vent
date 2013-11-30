@@ -25,7 +25,7 @@
 											echo '<br/>Categoria: ';
 											foreach ($producto['Categoria'] as $catego):
 														echo $this->Html->link($catego['nombre'].' ',array('controller'=>'productos','action'=>'index/'.$catego['id']),array('class'=>'category'));
-														endforeach;	?>
+											endforeach;	?>
 
 										<p class="price"><?php echo h($producto['Producto']['precio']); ?></p>
 												</div>

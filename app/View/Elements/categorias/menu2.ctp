@@ -1,5 +1,3 @@
-
-
 <div class="block">	
 	<ul class="nav nav-list">
 		<li class="nav-header">CATEGORÍA</li>

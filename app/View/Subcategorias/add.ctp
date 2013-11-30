@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Subcategoria'); ?></legend>
 	<?php
-		echo $this->Form->input('categoria_id');
+		echo $this->Form->input('categoria_id', array('type' => 'hidden'));
 		echo $this->Form->input('nombre');
 	?>
 	</fieldset>

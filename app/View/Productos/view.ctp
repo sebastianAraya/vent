@@ -36,29 +36,31 @@
 						?>
 							</div>
 							<div class="span5">
-									<h4><?php echo $this->Html->link(__('Edit Producto'), array('action' => 'edit', $producto['Producto']['id'])); ?></h4>
-									<h4>
-		<?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?></h4>
-		
+									<h5><?php echo $this->Html->link(__('Edit Producto'), array('action' => 'edit', $producto['Producto']['id'])); ?></h5>
+									<h5>
+		<?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?></h5>
 								<address>
-									<strong>Nombre:</strong> <span><?php echo h($producto['Producto']['nombre']);?></span><br>
-									<strong>Codigo Producto:</strong> <span>C- <?php echo h($producto['Producto']['id']); ?> </span><br>
-									<strong>Disponibilidad:</strong> <span style="color:green">Disponible</span> <br>
-									<strong>Numero de veces que se solicita este producto:</strong> <span> <?php echo $producto['Producto']['cantidad']; ?></span><br>				<strong>Subido el:</strong> <span><?php echo $producto['Producto']['fecha']; ?></span><br>
-									<strong>Dueñ@ del producto:</strong> <span><?php echo $this->Html->link($producto['User']['id'], array('controller' => 'users', 'action' => 'view', $producto['User']['id'])); ?></span><br>
+									<h4><?php echo h($producto['Producto']['nombre']);?></h4><br>
+									<strong>Estado del producto:</strong> <span style="color:green">Disponible</span> <br>
+									<strong>Subido el:</strong> <span><?php echo $producto['Producto']['fecha']; ?></span><br>
+									<strong>Vendedor:</strong> <span><?php echo $this->Html->link($producto['User']['nombre'], array('controller' => 'users', 'action' => 'view', $producto['User']['id'])); ?></span><br>
 									<strong>Categorias: </strong> 
 									<?php foreach ($producto['Categoria'] as $categoria):
 											echo '<span>'.$this->Html->link($categoria['nombre'], array('action' => 'index/'.$categoria['id'])).' </span>';
-									endforeach;?>
+
+									?>
 								</address>									
 								<h4><strong>Precio: $<?php echo h($producto['Producto']['precio']); ?> </strong></h4>
 								<br />
-								<form class="form-inline">
+								<div class="form-inline">
 									<p>&nbsp;</p>
 									<label>Cantidad:</label>
 									<input type="text" class="span1" placeholder="1">
-									<button class="btn btn-inverse" type="submit">Agregar a la compra</button>
-								</form>
+									<?php 
+										echo $this->Html->link("Agregar a la compra", array('controller' => 'carro','action'=> 'carrito_compra_add/'.$producto['Producto']['id']), array('class' => 'btn btn-inverse')); 
+										endforeach;
+									?>
+								</div>
 							</div>							
 						</div>
 						<div class="row">

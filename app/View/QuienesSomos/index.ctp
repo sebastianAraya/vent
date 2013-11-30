@@ -12,14 +12,15 @@
 					</div>					
 					<div class="span9" style="box-shadow: 0px 4px 15px #206631;">
 						<p style="text-align:justify;padding:20px;font: oblique 190% sans-serif bold; line-height: 200%; line-height: 200%;">	
-						<?php echo $quienesSomos ?>
+						 Somos una plataforma donde microempresarios y emprendedores tienen la oportunidad de mostrar sus creaciones al mercado, ofrecemos un servicio cercano y confiable, las personas que aquí publican sus servicios y productos deben cumplir con estándares exigidos por fusión futuro como transparencia en la venta, puntualidad, confianza y trabajo en equipo. 
+Aquí venden personas que están emprendiendo un nuevo futuro
+
 						</p>
 					</div>
 				</div>
 				<div class="row" style= "padding-top:40px; padding-bottom: 30px; border-bottom:thick dotted #0DA51F;">	
 					<div class="span9" style="box-shadow: 0px 4px 15px #206631;">
-						<p style="text-align:justify;padding:20px;font: oblique 190% sans-serif bold; line-height: 200%; line-height: 200%;">	
-						Solo debes elegir los productos que quieres comprar dejándolos en el carro de compra, esto gatilla un mail al vendedor y este recibirá tu pedido, en un plazo máximo de 24 horas se comunicara contigo para acordar la entrega y el pago.
+						<p style="text-align:justify;padding:20px;font: oblique 190% sans-serif bold; line-height: 200%; line-height: 200%;">	Solo debes elegir los productos que quieres comprar dejándolos en el carro de compra, esto gatilla un mail al vendedor y este recibirá tu pedido, en un plazo máximo de 24 horas se comunicara contigo para acordar la entrega y el pago.
 						</p>
 					</div>
 					<div class="span3" style="padding-top: 30px;">

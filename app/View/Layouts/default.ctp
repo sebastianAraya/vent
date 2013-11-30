@@ -39,15 +39,12 @@
 		<div id="top-bar" class="container">
 
 					<a href="index.html" class="logo pull-left">
-						<?php echo $this->Html->image('images/2logo.png', array('class'=>'logoInicio')); ?></a>
+						<?php echo $this->Html->link( $this->Html->image('images/2logo.png', array('class'=>'logoInicio')),array("controller"=>"pages", "action"=>"display","home"), array("escape" => false) ) ; ?></a>
 			<div class="row">
 				<div class="span8 offset4">
 					<div class="account pull-right">
 						<ul class="user-menu">		
-
-							
-							<li><a href="cart.html">Ver Pedido actual</a></li>
-							<li><a href="checkout.html">Enviar Pedido</a></li>
+							<li><?php echo $this->Html->link('Ver Carrito de compras',array('controller' => 'carro', 'action' => 'index'));?></li>
 							<li><?php echo $this->Html->link('Login',array('controller' => 'users', 'action' => 'login'));?></li>
 						</ul>
 					</div>

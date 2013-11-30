@@ -50,7 +50,7 @@ class CategoriasController extends AppController {
 			$this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
 				$this->Session->setFlash(__('The categoria has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller' => 'productos' ,'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The categoria could not be saved. Please, try again.'));
 			}

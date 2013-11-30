@@ -16,7 +16,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($carrito as $variable): ?>	
+								<?php 
+								$total = 0;
+								if($carrito != null){
+								foreach ($carrito as $variable): ?>	
 								<tr>
 									<td><?php echo $this->Html->link('Borrar',array('controller' => 'Carro', 'action' => 'carrito_compra_delete/'.$variable['producto']['Producto']['id']));?></td>
 									<td>
@@ -29,14 +32,14 @@
 									<td><?php echo $variable['producto']['Producto']['nombre'] ?></td>
 									<td><?php echo $variable['cantidad'] ?></td>
 									<td><?php echo $variable['producto']['Producto']['precio'] * $variable['cantidad'] ?></td>
-								</tr>			  
-								<?php endforeach ?>
+								</tr>
+								<?php endforeach; }?>
 								<tr>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-									<td><strong>$3,600.00</strong></td>
+									<td>Total: <strong><?php echo $total?></strong></td>
 								</tr>		  
 							</tbody>
 						</table>
@@ -50,6 +53,4 @@
 						<?php echo $this->element('categorias/random_product'); ?>
 					</div>
 				</div>
-			</section>			
-			
-			<?php debug($carrito) ?>
+			</section>

@@ -45,12 +45,15 @@ class SubcategoriasController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($catego = null) {
+
 		if ($this->request->is('post')) {
-			$this->Subcategoria->create();
+			$this->request->data['Subcategoria']['categoria_id'] = $catego;
+			//$this->Subcategoria->categoria_id = $catego;
+			debug($this->request->data);
 			if ($this->Subcategoria->save($this->request->data)) {
 				$this->Session->setFlash(__('The subcategoria has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller' => 'productos','action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The subcategoria could not be saved. Please, try again.'));
 			}

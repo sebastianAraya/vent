@@ -15,9 +15,13 @@ class CarroController extends AppController {
  * @return void
  */
 	public function index() {
+        
 		if($this->Session->check('Producto'))
         {
            $carroProductos = $this->Session->read('Producto');
+        }
+        else{
+            $carroProductos = null;
         }
         $this->set('carrito',$carroProductos);
 	}
@@ -39,9 +43,7 @@ class CarroController extends AppController {
 
         $this->Session->write('Producto',$carroProductos);
         $this->set('carrito',$carroProductos);
-
-        debug($carroProductos);
-        //return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('controller'=>'carro','action' => 'index'));
     }
 
     public function carrito_compra_delete($id = null){
@@ -55,8 +57,8 @@ class CarroController extends AppController {
 
 		$this->Session->write('Producto',$productos);
         $this->set('carrito',$productos);
-		debug($productos);
-
+	    return $this->redirect(array('controller'=>'carro','action' => 'index'));
+  
 		//$this->render();
 	}
 

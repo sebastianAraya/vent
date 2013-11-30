@@ -1,9 +1,10 @@
+<div class="users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
-		echo $this->Form->input('username');
-		echo $this->Form->input('password', array('type'=>'password','class' =>'span12','label' => 'Ingrese contraseña', 'placeholder' => 'Contraseña'));
+		echo $this->Form->input('usuario');
+		echo $this->Form->input('pass');
 		echo $this->Form->input('tipo');
 		echo $this->Form->input('nombre');
 		echo $this->Form->input('apellido');
@@ -20,3 +21,4 @@
 		<li><?php echo $this->Html->link(__('List Productos'), array('controller' => 'productos', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Producto'), array('controller' => 'productos', 'action' => 'add')); ?> </li>
 	</ul>
+</div>

@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Categoria'); ?></legend>
 	<?php
 		echo $this->Form->input('nombre');
-		echo $this->Form->input('foto');
+		echo $this->Form->input('foto', array('type' => 'hidden'));
 		echo $this->Form->input('Producto');
 	?>
 	</fieldset>

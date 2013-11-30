@@ -53,11 +53,11 @@ class PagesController extends AppController {
 		$this->loadModel('Producto');
 		$productos = $this->Producto->find('all', array(
 				'limit' => 12,
-				'order' => 'fecha',
+				'order' => array('fecha DESC'),
 			));
 		$productos2 = $this->Producto->find('all', array(
 				'limit' => 12,
-				'order' => 'cantidad',
+				'order' => array('cantidad DESC'),
 			));
 		$this->set(compact('productos','productos2'));
 
