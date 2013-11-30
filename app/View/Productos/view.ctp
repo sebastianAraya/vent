@@ -1,7 +1,6 @@
 			<section class="header_text sub">
 				<h4><span>Productos</span></h4>
 			</section>
-
 			<section class="main-content container">				
 				<div class="row">						
 					<div class="span9">
@@ -36,19 +35,19 @@
 						?>
 							</div>
 							<div class="span5">
-									<h5><?php echo $this->Html->link(__('Edit Producto'), array('action' => 'edit', $producto['Producto']['id'])); ?></h5>
-									<h5>
-		<?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?></h5>
+									
 								<address>
-									<h4><?php echo h($producto['Producto']['nombre']);?></h4><br>
+									<h2><?php echo h($producto['Producto']['nombre']);?></h2><br>
 									<strong>Estado del producto:</strong> <span style="color:green">Disponible</span> <br>
 									<strong>Subido el:</strong> <span><?php echo $producto['Producto']['fecha']; ?></span><br>
 									<strong>Vendedor:</strong> <span><?php echo $this->Html->link($producto['User']['nombre'], array('controller' => 'users', 'action' => 'view', $producto['User']['id'])); ?></span><br>
-									<strong>Categorias: </strong> 
+										<strong>Categorias: </strong> 
 									<?php foreach ($producto['Categoria'] as $categoria):
 											echo '<span>'.$this->Html->link($categoria['nombre'], array('action' => 'index/'.$categoria['id'])).' </span>';
-
-									?>
+										endforeach;
+									?><br>
+									<strong>Descripción: </strong> 
+										<?php echo h($producto['Producto']['descripcion']); ?>
 								</address>									
 								<h4><strong>Precio: $<?php echo h($producto['Producto']['precio']); ?> </strong></h4>
 								<br />
@@ -58,22 +57,16 @@
 									<input type="text" class="span1" placeholder="1">
 									<?php 
 										echo $this->Html->link("Agregar a la compra", array('controller' => 'carro','action'=> 'carrito_compra_add/'.$producto['Producto']['id']), array('class' => 'btn btn-inverse')); 
-										endforeach;
 									?>
 								</div>
 							</div>							
 						</div>
 						<div class="row">
 							<div class="span9">
-								<ul class="nav nav-tabs" id="myTab">
-									<li class="active"><a href="#home">Descripción</a></li>
-								</ul>							 
-								<div class="tab-content">
-									<div class="tab-pane active" id="home">
-										<?php echo h($producto['Producto']['descripcion']); ?>
-									</div>
-									
-								</div>							
+								<h5><?php echo $this->Html->link(__('Edit Producto'), array('action' => 'edit', $producto['Producto']['id'])); ?></h5>
+									<h5>
+		<?php echo $this->Form->postLink(__('Delete Producto'), array('action' => 'delete', $producto['Producto']['id']), null, __('Are you sure you want to delete # %s?', $producto['Producto']['id'])); ?></h5>
+															
 							</div>						
 							<div class="span9">	
 								<br>

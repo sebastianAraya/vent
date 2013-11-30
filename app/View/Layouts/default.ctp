@@ -66,22 +66,26 @@
 			<section id="footer-bar" style="margin: 0px;">
 				<div class="row">
 					<div class="span3">
-						<h4>Navigation</h4>
+						<h4>Navegación</h4>
 						<ul class="nav">
-							<li><a href="./index.html">Home</a></li>  
-							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
-						</ul>					
+							<li> <?php echo $this->Html->link(__('Quienes Somos'), array('controller' => 'QuienesSomos','action' => 'index')); ?> </li>
+							<li> <?php echo $this->Html->link(__('Conócenos'), array('controller' => 'QuienesSomos','action' => 'conocenos')); ?> </li>
+							<?php foreach($categories as $categoria) : ?>
+							    <li> 
+								    <?php echo $this->Html->link(__($categoria['Categoria']['nombre']), array('controller' => 'productos','action' => 'index',$categoria['Categoria']['id'])); ?>
+							    </li>
+							<?php endforeach; ?>
+							<li> <a href="#" >Contacto</a> </li>
+						</ul>
 					</div>
 					<div class="span4">
-						<h4>My Account</h4>
+						<h4>Nuestros Vendedores</h4>
 						<ul class="nav">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
+							<?php foreach($usuaries as $categoria) : ?>
+							    <li> 
+								    <?php echo $this->Html->link(__($categoria['User']['nombre']), array('controller' => 'Users','action' => 'view',$categoria['User']['id'])); ?>
+							    </li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 					<div class="span5">
@@ -98,11 +102,10 @@
 				</div>	
 			</section>
 			
-			<section id="copyright" style="margin-left: 0px; margin-right: 0px;">
-				<span>asdf</span>
+			<section id="copyright" style="margin-left: 0px; margin-right: 0px; text-align:center;">
+				Creado por <span> <a href="mailto: sebastian.arayam@usach.cl"> Sebastian Araya </a> </span> y <span> <a href="mailto: mrubio321@gmail.com"> Manuel Rubio </a> </span>
 			</section>
 		</div>
-		
 <?php
 		echo $this->Html->script('common'); 
         echo $this->Html->script('jquery.flexslider-min');   

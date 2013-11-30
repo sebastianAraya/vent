@@ -55,6 +55,8 @@ class AppController extends Controller {
         $this->set('catego', null);
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
+        $this->loadModel('User');
+        $this->set('usuaries', $this->User->find("all"));
     	$this->set('categories', $this->Categoria->find("all"));
     	$this->set('subcats', $this->Subcategoria->find("all"));
     	$this->Auth->allow('login','index','display','add','view','edit','Conocenos');

@@ -1,10 +1,12 @@
 <section class="header_text sub">
-	<h4><span>Carro de Compras</span></h4>
-			</section>
+	<h4><span>Envío del pedido</span></h4>
+</section>
 			<section class="main-content container">				
 				<div class="row">
 					<div class="span9">					
-						<h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
+						<h4 class="title">Ingrese su Datos</h4>
+
+						
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -51,6 +53,6 @@
 					<div class="span3 col">
 						<?php echo $this->element('categorias/menu2'); ?>
 						<?php echo $this->element('categorias/random_product'); ?>
-					</div>
-				</div>
-			</section>
+			</div>
+		</div>
+	</section>

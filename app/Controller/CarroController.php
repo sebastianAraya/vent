@@ -25,7 +25,17 @@ class CarroController extends AppController {
         }
         $this->set('carrito',$carroProductos);
 	}
-
+    public function preEnvio() {
+        
+        if($this->Session->check('Producto'))
+        {
+           $carroProductos = $this->Session->read('Producto');
+        }
+        else{
+            $carroProductos = null;
+        }
+        $this->set('carrito',$carroProductos);
+    }
 
 	public function carrito_compra_add($id = null, $cantidad = 1)
         {
