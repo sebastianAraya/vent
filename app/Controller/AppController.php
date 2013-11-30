@@ -40,11 +40,6 @@ class AppController extends Controller {
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
         )
     );
-     public function rol(){
-     	$user = $this->Session->read('Auth.User');
-     	return $user['tipo'];	 
-     }
-
     public function beforeFilter() {
         $this->loadModel('Producto');
         $this->set('random_producto', $this->Producto->find('all', array( 
@@ -59,6 +54,6 @@ class AppController extends Controller {
         $this->set('usuaries', $this->User->find("all"));
     	$this->set('categories', $this->Categoria->find("all"));
     	$this->set('subcats', $this->Subcategoria->find("all"));
-    	$this->Auth->allow('login','index','display','add','view','edit','Conocenos');
+    	$this->Auth->allow('login','index','display','view','Conocenos');
     }
 }

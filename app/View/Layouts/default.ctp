@@ -36,6 +36,7 @@
         ?>
 </head>
 <body>
+<?php $user = $this->Session->read('Auth.User');?>
 		<div id="top-bar" class="container">
 
 					<a href="index.html" class="logo pull-left">
@@ -45,7 +46,13 @@
 					<div class="account pull-right">
 						<ul class="user-menu">		
 							<li><?php echo $this->Html->link('Ver Carrito de compras',array('controller' => 'carro', 'action' => 'index'));?></li>
-							<li><?php echo $this->Html->link('Login',array('controller' => 'users', 'action' => 'login'));?></li>
+							<?php if($user['tipo']!='admin'){ ?>
+							<li><?php echo $this->Html->link('Entrar',array('controller' => 'users', 'action' => 'login'));?></li>
+							<?php }else{ ?>
+							<li><?php echo $this->Html->link("Bienvenido ".$user['nombre'],array('controller' => 'users', 'action' => 'edit',$user['id']));?>
+									<li><?php echo $this->Html->link('Salir',array('controller' => 'users', 'action' => 'logout'));?></li>
+							</li>
+							<?php } ?>
 						</ul>
 					</div>
 				</div>

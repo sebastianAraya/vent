@@ -42,7 +42,7 @@ public function login() {
         if ($this->Auth->login()) {
             return $this->redirect($this->Auth->redirect());
         }
-        $this->Session->setFlash(__('Invalid username or password, try again'));
+        $this->Session->setFlash(__('Nombre de usuario o contraseña incorrectos, intente nuevamente'));
     }
 }
 

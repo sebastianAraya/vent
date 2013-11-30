@@ -1,8 +1,10 @@
-
+<?php $user = $this->Session->read('Auth.User');?>
 <ul>
+	<?php if($user['tipo']=='admin'){ ?>
 	<li>
 	<?php echo $this->Html->link(__('+'), array('controller' => 'categorias','action' => 'add')); ?>
 	</li>
+	<? } ?>
 	<li>
 	<?php echo $this->Html->link(__('Quienes Somos'), array('controller' => 'QuienesSomos','action' => 'index')); ?>
 		<ul>
@@ -28,9 +30,11 @@
 					</li>
 		    	<?php endif;?>
 		    <?php endforeach; ?>
+		    <?php if($user['tipo']=='admin'){ ?>
 		    <li>
 				<?php echo $this->Html->link(__('+'), array('controller' => 'subcategorias','action' => 'add',$categoria['Categoria']['id'])); ?>
 			</li>
+			<? } ?>
 		    </ul>
 	    </li>
 	<?php endforeach; ?>
