@@ -71,12 +71,30 @@ public function logout() {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			if($this->data['User']['foto']!=null){
+				$destino = WWW_ROOT.'files'.DS;
+				$rand= rand(1,100000000);
+				if(move_uploaded_file($this->data['User']['foto']['tmp_name'], $destino.$rand."_".$this->data['User']['foto']['name']) ){
+					$this->request->data['User']['foto'] = $rand."_".$this->data['User']['foto']['name'] ; 
+					if ($this->User->save($this->request->data)) {
+						$this->Session->setFlash(__('The user has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+					}
+				}else{
+					$this->Session->setFlash(__('El archivo no se pudo subir, intente nuevamente'));       
+		       		return $this->redirect(array('action' => 'index'));
+				}
+			}
+			else{
+				$this->User->create();
+				if ($this->User->save($this->request->data)) {
+					$this->Session->setFlash(__('The user has been saved.'));
+					return $this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				}
 			}
 		}
 	}
@@ -93,11 +111,30 @@ public function logout() {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			
+			if($this->data['User']['foto']!=null){
+				$destino = WWW_ROOT.'files'.DS;
+				$rand= rand(1,100000000);
+				debug($this->data['User']['foto']['tmp_name']);
+				if(move_uploaded_file($this->data['User']['foto']['tmp_name'], $destino.$rand."_".$this->data['User']['foto']['name']) ){
+					$this->request->data['User']['foto'] = $rand."_".$this->data['User']['foto']['name'] ; 
+					if ($this->User->save($this->request->data)) {
+						$this->Session->setFlash(__('The user has been saved.'));
+						return $this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+					}
+				}else{
+					$this->Session->setFlash(__('El archivo no se pudo subir, intente nuevamente'));       
+		       	//	return $this->redirect(array('action' => 'index'));
+				}
+			}else{
 			if ($this->User->save($this->request->data)) {
-				//$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('controller'=>'productos', 'action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+					//$this->Session->setFlash(__('The user has been saved.'));
+					return $this->redirect(array('controller'=>'productos', 'action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				}
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));

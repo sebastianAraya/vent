@@ -1,22 +1,56 @@
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('username');
-		echo $this->Form->input('password', array('type'=>'password','class' =>'span12','label' => 'Ingrese contraseña', 'placeholder' => 'Contraseña'));
-		echo $this->Form->input('tipo');
-		echo $this->Form->input('nombre');
-		echo $this->Form->input('apellido');
-		echo $this->Form->input('correo');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div class="userform" style=" padding-left: 25%;">
+<section class="main-content">        
+        <div class="row">
+          <div class="span5 offset1">         
+            <h4 class="title"><span class="text"><strong>Agregar Perfil</strong> Vendedores</span></h4>
+            <?php echo $this->Form->create('User',array('type'=>'file')); ?>
+           <?php echo $this->Form->input('id'); ?>
+              <input type="hidden" name="next" value="/">
+              <fieldset>
+                <div class="control-group">
+                  <a style="color: #BD0707;"><?php echo $this->Session->flash(); ?></a>
+                  <div class="controls">
+                    <?php echo $this->Form->input('username',array('label'=>'Nombre de usuario', 'type' => 'text', 'placeholder'=>'Ingrese usuario', 'class' => 'input-xlarge')); ?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                     <?php echo $this->Form->input('password',array('label'=>'Contraseña', 'type' => 'password', 'placeholder'=>'Ingrese contraseña', 'class' => 'input-xlarge')); ?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                     <?php echo $this->Form->input('nombre',array('label'=>'Nombre', 'type' => 'text', 'placeholder'=>'Ingrese contraseña', 'class' => 'input-xlarge')); ?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                     <?php echo $this->Form->input('apellido',array('label'=>'Apellido', 'type' => 'text', 'placeholder'=>'Ingrese contraseña', 'class' => 'input-xlarge')); ?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                     <?php echo $this->Form->input('correo',array('label'=>'Correo electrónico', 'type' => 'text', 'placeholder'=>'Ingrese contraseña', 'class' => 'input-xlarge')); ?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                     <?php echo $this->Form->input('tipo',array('label'=>'Rol', 'type' => 'text', 'placeholder'=>'Ingrese contraseña', 'class' => 'input-xlarge')); ?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                     <?php
+						echo $this->Form->input('foto',array('type'=>'file','label'=>'Foto de perfil'));
+						echo $this->Form->input('imagen',array('type'=>'hidden','label'=>''));
+					?>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <?php echo $this->Form->end(array('value'=>'add', 'class' => 'btn btn-inverse large', 'tabindex' => '3')); ?>
+                  <hr>
+                </div>
+              </fieldset>
+            </form>       
+</section>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Productos'), array('controller' => 'productos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Producto'), array('controller' => 'productos', 'action' => 'add')); ?> </li>
-	</ul>
