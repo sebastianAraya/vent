@@ -57,7 +57,16 @@ class ProductosController extends AppController {
 			throw new NotFoundException(__('Invalid producto'));
 		}
 		$options = array('conditions' => array('Producto.' . $this->Producto->primaryKey => $id));
-		$this->set('producto', $this->Producto->find('first', $options));
+		
+		$producto =  $this->Producto->find('first', $options);
+		$this->set('producto', $producto);
+		
+		
+			$this->set('producto_relacionado', $this->Producto->find('all', array( 
+	        //   'conditions' => array('Producto.mostrar' => '0'), 
+	           'order' => 'rand()',
+	        )));
+
 	}
 
 /**
