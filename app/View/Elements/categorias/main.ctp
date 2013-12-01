@@ -4,7 +4,7 @@
 	<li>
 	<?php echo $this->Html->link(__('+'), array('controller' => 'categorias','action' => 'add')); ?>
 	</li>
-	<? } ?>
+	<?php } ?>
 	<li>
 	<?php echo $this->Html->link(__('Quienes Somos'), array('controller' => 'QuienesSomos','action' => 'index')); ?>
 		<ul>
@@ -34,7 +34,7 @@
 		    <li>
 				<?php echo $this->Html->link(__('+'), array('controller' => 'subcategorias','action' => 'add',$categoria['Categoria']['id'])); ?>
 			</li>
-			<? } ?>
+			<?php } ?>
 		    </ul>
 	    </li>
 	<?php endforeach; ?>
