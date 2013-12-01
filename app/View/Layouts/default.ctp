@@ -49,7 +49,7 @@
 							<?php if($user['tipo']!='admin'){ ?>
 							<li><?php echo $this->Html->link('Entrar',array('controller' => 'users', 'action' => 'login'));?></li>
 							<?php }else{ ?>
-							<li><?php echo $this->Html->link("Bienvenido ".$user['nombre'],array('controller' => 'users', 'action' => 'view',$user['id']));?>
+							<li><?php echo $this->Html->link("Bienvenido ".$user['nombre'],array('controller' => 'users', 'action' => 'edit',$user['id']));?>
 									<li><?php echo $this->Html->link('Salir',array('controller' => 'users', 'action' => 'logout'));?></li>
 							</li>
 							<?php } ?>

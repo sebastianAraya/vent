@@ -40,15 +40,6 @@ class AppController extends Controller {
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
         )
     );
-    public function isAuthorized($user) {
-    // Admin can access every action
-    if (isset($user['tipo']) && $user['tipo'] === 'admin') {
-        return true;
-    }
-
-    // Default deny
-    return false;
-	}
     public function beforeFilter() {
         $this->loadModel('Producto');
         $this->set('random_producto', $this->Producto->find('all', array( 
@@ -56,7 +47,6 @@ class AppController extends Controller {
            'order' => 'rand()',
            'limit' => 3,
         )));
-        
         $this->set('catego', null);
 		$this->loadModel('Categoria');
 		$this->loadModel('Subcategoria');
