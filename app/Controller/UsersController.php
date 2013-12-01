@@ -21,7 +21,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function isAuthorized($user) {
-	    if ($user['role'] == 'gerente') {
+	    if ($user['tipo'] == 'adminss') {
 	        return true;
 	    }
 	    if (in_array($this->action, array('edit', 'delete'))) {
@@ -31,11 +31,6 @@ class UsersController extends AppController {
 	    }
 	    return true;
 	}
-	/**********************************************************/
-	public function beforeFilter() {
-    parent::beforeFilter();
-    $this->Auth->allow('add'); // Letting users register themselves
-}
 
 public function login() {
     if ($this->request->is('post')) {
@@ -99,8 +94,8 @@ public function logout() {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				//$this->Session->setFlash(__('The user has been saved.'));
+				return $this->redirect(array('controller'=>'productos', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
