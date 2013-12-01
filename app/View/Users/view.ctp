@@ -41,10 +41,15 @@
 			&nbsp;
 		</td>
 		</tr>
+		<tr>
+
+		</tr>
 	</tr>
-	</table>
-</div>
-<div class="related">
-	<h3><?php echo __('Mis Productos'); ?></h3>
 	
+	</table>
+	<div class="control-group" style="margin-left: 74%;">
+		<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-inverse large', 'tabindex' => '3')); ?> 
+		<?php echo $this->Form->postLink(__('Eliminar'), array('action' => 'delete', $user['User']['id']),  array('class' => 'btn btn-inverse large', 'tabindex' => '3'), __('¿Está seguro que desea eliminar su cuenta?')); ?>
+		</div>
 </div>
+
