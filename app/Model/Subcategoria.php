@@ -7,6 +7,8 @@ App::uses('AppModel', 'Model');
  */
 class Subcategoria extends AppModel {
 
+	
+	public $displayField = 'nombre';
 /**
  * Validation rules
  *
